@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Анкета</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script type="text/javascript" src="source/jquery-3.2.1.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="source/css/style.css">
+	<link rel="stylesheet" type="text/css" href="source/css/select.css">
+	<link rel="stylesheet" type="text/css" href="source/css/social.css">
+	<link rel="stylesheet" type="text/css" href="source/css/final.css">
+	<link rel="stylesheet" type="text/css" href="source/css/mobile.css">
+
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+</head>
+
+<body>
+	<div class="paginat">
+		<input type="button" class="button_step button_step_1 step_button_active" value="1" style="color: #000000">
+		<input type="button" class="button_step button_step_2" value="2" style="cursor: pointer">
+		<input type="button" class="button_step button_step_3" disabled value="3">
+		<input type="button" class="button_step button_step_4" disabled value="4">
+	</div>
+
+	<div id="final_button">
+		<input type="button" class="go_to_start" value="Пройти заново">
+	</div>
+
+	<div class="prev_next">
+		<input type="button" class="prev" value="GitHub" onclick="window.open('https://github.com/Siplyj/questionnaire')">
+		<input type="button" class="next" value="Следующий 〉">
+	</div>
+
+	<form id="step_1" class="auth-form" method="post">
+
+		<div class="step_title">1. Введите имя и e-mail</div>
+
+		<input type="text" class="login" placeholder="Имя" autocomplete="off">
+		<span class="error_message_login1 error">поле не может быть пустым</span>
+		<span class="error_message_login2 error">логин введен некорректно</span>
+		</br>
+		<input type="text" class="email" placeholder="E-mail" autocomplete="off">
+		<span class="error_message_login3 error">поле не может быть пустым</span>
+		<span class="error_message_login4 error">email введен некорректно</span>
+		</br>
+	</form>
+
+	<form id="step_2" class="auth-form" method="post">
+
+		<div class="step_title">2. Выберите страну и город</div>
+
+		<ul id="select_countries">
+			<li>
+				<input type="text" id="countries_header" class="country" placeholder="Страна" val="Страна" autocomplete="off">
+				<span class="error_message_country1 error">поле не может быть пустым</span>
+				<ul style="z-index: 1"></ul>
+			</li>
+		</ul>
+				
+		<ul id="select_cities">
+			<li>
+				<input type="text" id="cities_header" class="city" placeholder="Город" val="Город" autocomplete="off" style="background: #e6e6e6" disabled>
+				<span class="error_message_country2 error">поле не может быть пустым</span>
+				<ul style="z-index: 1"></ul>
+			</li>
+		</ul>
+	</form>
+
+	<form id="step_3" class="auth-form" method="post">
+			
+		<div class="step_title">3. Отметьте социальные сети</div>
+
+		<p class="social_group social_group_facebook">
+			<input type="checkbox" id="facebook_checkbox" class="checkbox">
+			<label for="facebook_checkbox" class="social_network">Facebook</label>
+			<input type="text" class="hide_social_link link" id="facebook_login" style="border: 2px solid rgba(255, 255, 255, 0); border-radius: 2px;" placeholder="Ваша страница в Facebook" autocomplete="off">
+			<span id="error_message_link1" class="error_message_link1 error">введите корректный адрес</span>
+		</p>
+
+		<p class="social_group social_group_vk">
+			<input type="checkbox" id="vk_checkbox" class="checkbox">
+			<label for="vk_checkbox" class="social_network">Вконтакте</label>
+			<input type="text" class="hide_social_link link" id="vk_login" style="border: 2px solid rgba(255, 255, 255, 0); border-radius: 2px;" placeholder="Ваша страница в Вконтакте" autocomplete="off">
+			<span id="error_message_link2" class="error_message_link2 error">введите корректный адрес</span>
+		</p>
+		<p class="social_group social_group_twitter">
+			<input type="checkbox" id="twitter_checkbox" class="checkbox">
+			<label for="twitter_checkbox" class="social_network">Twitter</label>
+			<input type="text" class="hide_social_link link" id="twitter_login" style="border: 2px solid rgba(255, 255, 255, 0); border-radius: 2px;" placeholder="Ваша страница в Twitter" autocomplete="off">
+			<span id="error_message_link3" class="error_message_link3 error">введите корректный адрес</span>
+		</p>
+		<p class="social_group social_group_ok">
+			<input type="checkbox" id="ok_checkbox" class="checkbox">
+			<label for="ok_checkbox" class="social_network">Одноклассники</label>
+			<input type="text" class="hide_social_link link" id="ok_login" style="border: 2px solid rgba(255, 255, 255, 0); border-radius: 2px;" placeholder="Ваша страница в Одноклассниках" autocomplete="off">
+			<span id="error_message_link4" class="error_message_link4 error">введите корректный адрес</span>
+		</p>
+	</form>
+
+	<form id="step_4" class="auth-form" method="post">
+				
+		<div class="step_title">4. Выберите любимого котика</div>
+
+		<div class="cats cat1"></div>
+		<div class="cats cat2"></div>
+		<div class="cats cat3"></div>
+		<div class="dogs dog4"></div></br>
+		<p id="error_message_animal_dog">Вы выбрали собачку. А надо котика.</p>
+		<p id="error_message_animal_none">Вы забыли выбрать котика.</p>
+	</form>
+
+	<form id="step_5" class="auth-form" method="post">
+		<p id="final_login"></p>
+		<p id="final_email"></p>
+		<p id="final_region"></p>
+		<div id="final_cat"></div>
+		<p id="final_social"></p>
+	</form>
+
+	<script>
+		$(document).ready(function () {
+			var form_login, form_email, form_country_name, form_city_name,
+			form_facebook, form_vk, form_twitter, form_ok, form_cat;
+
+			// Первый этап
+			// Проверка полей на пустоту
+
+			var from_step = 1; // С какого этапа пришли
+			var to_step = 1; // На какой этап пришли
+			var last_step = 1; // Последний доступный этап
+			var max_step = 1; // Тоже последний доступный этап. Нужен для проверок различных частных случаев
+
+			longOrNot();
+
+			function validLoginEmail() {
+
+				// Проверка логина
+				var login = $(".login").val();
+				var valid_login = /^[a-zа-яё][a-zа-яё0-9 _-]+$/gi;
+
+				$(".login").removeClass("error_bording_login");
+				$(".login").css("border-style", "none");
+				$(".error_message_login1").css("visibility", "hidden");
+				$(".error_message_login2").css("visibility", "hidden");
+
+				if (!valid_login.test(login)) {
+
+					if (!$(".login").hasClass("error_bording_login")) {
+
+						if($(".login").val() == 0) {
+							$(".error_message_login2").css("visibility", "hidden");
+							$(".error_message_login1").css("visibility", "visible");
+							$(".error_message_login1").css("left", 100 + "%");
+							$(".error_message_login1").css("top", $(".login").position().top + $(".login").outerHeight(true) - $(".login").outerHeight()/2 - $(".error_message_login1").outerHeight() / 2);
+						} else {
+							$(".error_message_login1").css("visibility", "hidden");
+							$(".error_message_login2").css("visibility", "visible");
+							$(".error_message_login2").css("left", 100 + "%");
+							$(".error_message_login2").css("top", $(".login").position().top + $(".login").outerHeight(true) - $(".login").outerHeight()/2 - $(".error_message_login2").outerHeight() / 2);
+						}
+						$(".login").addClass("error_bording_login");
+						$(".login").css("border-style", "solid");
+					};
+					form_login = "";
+					
+				} else {
+					form_login = login;
+					$(".login").removeClass("error_bording_login");
+					$(".login").css("border-style", "none");
+					$(".error_message_login1").css("visibility", "hidden");
+					$(".error_message_login2").css("visibility", "hidden");
+				};
+
+				// Проверка e-mail
+				var email = $(".email").val();
+				var valid_email = /[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]/gi;
+
+				$(".email").removeClass("error_bording_email");
+				$(".email").css("border-style", "none");
+				$(".error_message_login3").css("visibility", "hidden");
+				$(".error_message_login4").css("visibility", "hidden");
+
+				if (!valid_email.test(email)) {
+
+					if (!$(".email").hasClass("error_bording_email")) {
+
+						if($(".email").val() == 0) {
+							$(".error_message_login4").css("visibility", "hidden");
+							$(".error_message_login3").css("visibility", "visible");
+							$(".error_message_login3").css("top", $(".email").position().top + $(".email").outerHeight(true) - $(".email").outerHeight()/2 - $(".error_message_login3").outerHeight() / 2);
+						} else {
+							$(".error_message_login3").css("visibility", "hidden");
+							$(".error_message_login4").css("visibility", "visible");
+							$(".error_message_login4").css("top", $(".email").position().top + $(".email").outerHeight(true) - $(".email").outerHeight()/2 - $(".error_message_login4").outerHeight() / 2);
+						}
+						$(".email").addClass("error_bording_email");
+						$(".email").css("border-style", "solid");
+					};
+					form_email = "";
+
+				} else {
+					form_email = email;
+					$(".email").removeClass("error_bording_email");
+					$(".email").css("border-style", "none");
+					$(".error_message_login3").css("visibility", "hidden");
+					$(".error_message_login4").css("visibility", "hidden");
+				};
+
+				if (form_login && form_email) {
+					validForm();
+				} else {
+					invalidForm();
+				};
+			};
+
+
+			//Второй этап
+			var form_country_val = "";	// Для проверки номера страны
+
+			// Получение списка стран
+			$.getJSON("data/cities/countries.json", function(data){
+				$.each(data, function(val, key) {
+					$("#select_countries ul").append("<li><a class='countries_element' data-country="+val+">"+key+"</a></li>");
+				});
+			});
+
+			// Клик по заголовку списка стран
+			$(document).on("click", "#countries_header", function () {
+
+				if ($("#select_countries ul").is(":visible")) {
+					$("#select_countries ul").css("display", "none");
+				} else {
+					$("#select_countries ul").css("display", "block");
+					$("#select_cities ul").css("display", "none");
+				};
+			});
+
+			// Фильтруем список стран в зависимости от введенных букв
+			$(document).on("keyup", "#countries_header", function () {
+
+				// Если список городов не пуст - очистить его
+				if ($("#select_cities ul li").length > 0) { 
+					$("#select_cities ul li").remove();
+					$("#cities_header").val("");
+					$("#select_cities ul").css("display", "none");
+				};
+
+				if($("#countries_header").val() != "") {
+					$("#cities_header").css("background", "#ffffff");
+					$("#cities_header").removeAttr("disabled");
+				} else {
+					$("#cities_header").css("background", "#e6e6e6");
+					$("#cities_header").prop("disabled", true);
+				};
+
+				$("#select_countries ul li").each(function() {
+					if ($(this).text().toLowerCase().indexOf($("#countries_header").val().toLowerCase())) {
+						$(this).css("display", "none");
+					} else {
+						$(this).css("display", "inline-block");
+						$("#select_countries ul").css("display", "block");
+						$("#select_cities ul").css("display", "none");
+					};
+				});
+			});
+
+			// Клик по названию страны из списка
+			$(document).on("click", ".countries_element", function () {
+
+				$("#countries_header").removeClass("error_bording_country");
+				$("#countries_header").css("border-style", "none");
+				$(".error_message_country1").css("visibility", "hidden");
+
+				// Если список городов не пуст - очистить его
+				if ($("#select_cities ul li").length > 0) { 
+					$("#select_cities ul li").remove();
+					$("#cities_header").val("");
+					$("#select_cities ul").css("display", "none");
+				};
+
+				form_country_val = $(this).attr("data-country"); // Записали номер страны для загрузки спика нужных городов
+				form_country_name = $(this).text(); // Записали название страны для последнего этапа
+				$("#countries_header").val(form_country_name);
+				$("#countries_header").css("color", "#000000");
+				$("#select_countries ul").css("display", "none");
+				$("#select_cities").css("display", "block");
+				$("#cities_header").css("background", "#ffffff");
+				$("#cities_header").removeAttr("disabled");
+
+				// Получение списка городов
+				$.getJSON("data/cities/cities.json", function(data){
+					$.each(data, function(val, key) {
+						if(key.country == form_country_val) {
+							$("#select_cities ul").css("display", "none");
+							$("#select_cities ul").append("<li><a class='cities_element' data-cities="+val+">"+key.name+"</a></li>");
+						};
+					});
+				});
+			});
+
+			// Клик по заголовку списка городов
+			$(document).on("click", "#cities_header", function () {
+
+				$("#select_countries ul").css("display", "none");
+
+				if ($("#select_cities ul").is(":visible")) {
+					$("#select_cities ul").css("display", "none");
+				} else {
+					$("#select_cities ul").css("display", "block");
+				};
+			});
+
+			// Фильтруем список городов в зависимости от введенных букв
+			$(document).on("keyup", "#cities_header", function () {
+
+				$("#select_cities ul li").each(function() {
+					if ($(this).text().toLowerCase().indexOf($("#cities_header").val().toLowerCase())) {
+						$(this).css("display", "none");
+					} else {
+						$(this).css("display", "inline-block");
+						$("#select_cities ul").css("display", "block");
+						$("#select_countries ul").css("display", "none");
+					};
+				});
+			});
+
+			// Клик по названию города из списка
+			$(document).on("click", ".cities_element", function () { // Если выбрали город
+
+				$("#cities_header").removeClass("error_bording_city");
+				$("#cities_header").css("border-style", "none");
+				$(".error_message_country2").css("visibility", "hidden");
+
+				form_city_name = $(this).text(); // записали название города для последнего этапа
+				$("#cities_header").val(form_city_name);
+				$("#cities_header").css("color", "#000000");
+				$("#select_cities ul").css("display", "none");
+			});
+
+			// Скрыть списки при клике на область вне поля ввода и списка
+			$(document).on("click", function (event) {
+				if ((event.target.id != "countries_header") && (event.target.id != "cities_header")) {
+					$("#select_countries ul").css("display", "none");
+					$("#select_cities ul").css("display", "none");
+				};
+			});
+
+			function validCountryCity() {
+
+				$("#countries_header").removeClass("error_bording_country");
+				$("#countries_header").css("border-style", "none");
+				$(".error_message_country1").css("visibility", "hidden");
+
+				$("#select_cities").removeClass("error_bording_city");
+				$("#cities_header").css("border-style", "none");
+				$(".error_message_country2").css("visibility", "hidden");
+
+				if ($("#countries_header").val() == "") {
+					$(".error_message_country1").css("visibility", "visible");
+					$(".error_message_country1").css("left", 100 + "%");
+					$(".error_message_country1").css("top", $("#countries_header").position().top + $("#countries_header").outerHeight(true) - $("#countries_header").outerHeight()/2 - $(".error_message_country1").outerHeight() / 2);
+
+					$("#countries_header").addClass("error_bording_country");
+					$("#countries_header").css("border-style", "solid");
+				};
+
+				if ($("#cities_header").val() == "") {
+					$(".error_message_country2").css("visibility", "visible");
+					$(".error_message_country2").css("left", 100 + "%");
+					$(".error_message_country2").css("top", $("#cities_header").position().top + $("#cities_header").outerHeight(true) - $("#cities_header").outerHeight()/2 - $(".error_message_country2").outerHeight() / 2);
+
+					$("#cities_header").addClass("error_bording_city");
+					$("#cities_header").css("border-style", "solid");
+				};
+
+				if (($("#countries_header").val() != "") && ($("#cities_header").val() != "")) {
+					form_country_name = $("#countries_header").val();
+					form_city_name = $("#cities_header").val();
+					validForm();
+				} else {
+					invalidForm();
+				};
+			};
+
+
+			//Третий этап
+			$(document).on("click", ".checkbox", function () {
+
+				// Если чекбокс включился, то показать соответствующее поле для ввода
+				if ($(this).prop("checked")) { 
+					$(this).addClass("checkbox_check");
+					$(this).siblings("input[type=text]").removeClass("hide_social_link");
+				} else {
+					$(this).removeClass("checkbox_check");
+					$(this).siblings("input[type=text]").removeClass("error_bording_link");
+					$(this).siblings("input[type=text]").addClass("hide_social_link");
+					$(this).siblings("input[type=text]").css("border-color", "rgba(255, 255, 255, 0)");
+					$(this).siblings("input[type=text]").val("");
+					$(this).siblings("span").css("visibility", "hidden");
+				};
+			});
+
+			// Проверка каждого поля на корректное заполнение
+			function validSocial() {
+
+				$(".error_message_checkbox").remove();
+
+				form_facebook = $("#facebook_login").val();
+				form_vk = $("#vk_login").val();
+				form_twitter = $("#twitter_login").val();
+				form_ok = $("#ok_login").val();
+				
+				var valid_link_facebook = /((http|https):\/\/)?(www.)?(fb|facebook).com\/[a-z0-9_\.-]+$/gi;
+				var valid_link_vk = /((http|https):\/\/)?(www.)?vk.com\/[a-z0-9_\.-]+$/gi;
+				var valid_link_twitter = /((http|https):\/\/)?(www.)?twitter.com\/[a-z0-9_\.-]+$/gi;
+				var valid_link_ok = /((http|https):\/\/)?(www.)?ok.ru\/[a-z0-9_\.-]+$/gi;
+
+				// Проверка Facebook
+				$("#error_message_link1").css("visibility", "hidden");
+				$("#facebook_login").css("border-color", "rgba(255, 255, 255, 0)");
+				$("#facebook_login").removeClass("error_bording_link");
+				form_facebook = $("#facebook_login").val(); // Записали ссылку на профиль в Facebook для последнего этапа
+
+				if (form_facebook != "" && !valid_link_facebook.test(form_facebook) && $("#error_message_link1").css("visibility") == "hidden") {
+					$("#error_message_link1").css("visibility", "visible");
+					$("#facebook_login").css("border-color", "#ff0000");
+					$("#facebook_login").addClass("error_bording_link");
+					$("#error_message_link1").css("visibility", "visible");
+				};
+
+				// Проверка Вконтакте
+				$("#error_message_link2").css("visibility", "hidden");
+				$("#vk_login").css("border-color", "rgba(255, 255, 255, 0)");
+				$("#vk_login").removeClass("error_bording_link");
+				form_vk = $("#vk_login").val(); // Записали ссылку на профиль в Вконтакте для последнего этапа
+
+				if (form_vk != "" && !valid_link_vk.test(form_vk) && $("#error_message_link2").css("visibility") == "hidden") {
+					$("#error_message_link2").css("visibility", "visible");
+					$("#vk_login").css("border-color", "#ff0000");
+					$("#vk_login").addClass("error_bording_link");
+				};
+
+				// Проверка Twitter
+				$("#error_message_link3").css("visibility", "hidden");
+				$("#twitter_login").css("border-color", "rgba(255, 255, 255, 0)");
+				$("#twitter_login").removeClass("error_bording_link");
+				form_twitter = $("#twitter_login").val(); // Записали ссылку на профиль в Twitter для последнего этапа
+
+				if (form_twitter != "" && !valid_link_twitter.test(form_twitter) && $("#error_message_link3").css("visibility") == "hidden") {
+					$("#error_message_link3").css("visibility", "visible");
+					$("#twitter_login").css("border-color", "#ff0000");
+					$("#twitter_login").addClass("error_bording_link");
+				};
+
+				// Проверка Одноклассников
+				$("#error_message_link4").css("visibility", "hidden");
+				$("#ok_login").css("border-color", "rgba(255, 255, 255, 0)");
+				$("#ok_login").removeClass("error_bording_link");
+				$(".error_message_link4").css("left", $(".link").offset().left - $("#step_3").offset().left + $(".link").outerWidth())
+				form_ok = $("#ok_login").val(); // Записали ссылку на профиль в Одноклассниках для последнего этапа
+
+				if (form_ok != "" && !valid_link_ok.test(form_ok) && $("#error_message_link4").css("visibility") == "hidden") {
+					$("#error_message_link4").css("visibility", "visible");
+					$("#ok_login").css("border-color", "#ff0000");
+					$("#ok_login").addClass("error_bording_link");
+				};
+
+				// Если ничего не выбрано, то получаем сообщение об ошибке
+				// Если же все ссылки корректны, то можно двигаться дальше
+				if ((form_facebook == "") && (form_vk == "") && (form_twitter == "") && (form_ok == "")) {
+
+					$("<span id='error_message_checkbox' class='error_message_checkbox'>Необходимо ввести хотя бы один адрес</span>").insertBefore($(".social_group_facebook"));
+					invalidForm();
+					
+				} else if (!(((form_facebook == "" || $("#facebook_login").hasClass("error_bording_link")) && !$("#facebook_login").hasClass("hide_social_link"))  ||
+					((form_vk == "" || $("#vk_login").hasClass("error_bording_link")) && !$("#vk_login").hasClass("hide_social_link")) ||
+					((form_twitter == "" || $("#twitter_login").hasClass("error_bording_link")) && !$("#twitter_login").hasClass("hide_social_link")) ||
+					((form_ok == "" || $("#ok_login").hasClass("error_bording_link")) && !$("#ok_login").hasClass("hide_social_link")))) {
+
+					validForm();
+					$(".next").val("Завершить");
+					$(".next").css("background", "#ff9800");
+					$(".next").css("color", "#ffffff");
+
+					if(window.matchMedia("(max-width: 690px)").matches) {
+						$(".cat1").css("left", "-153px");
+						$(".cat3").css("left", "-153px");
+					} else {
+						$(".cat3").css("left", "166px");
+					}
+
+				} else {
+					invalidForm();
+				};
+			};
+
+			// Четвертый этап
+			// Клик по изображениям. Если выбрана собачка, то показываем предупреждение
+			$(document).on("click", "#step_4 div", function() {
+
+				if ($(this).hasClass("cats")) {
+					$(".cats").css("border", "4px solid #f5f5f5");
+					$(".dog4").css("border", "4px solid #f5f5f5");
+					$(this).css("border", "4px solid #ff9100");
+					$("#error_message_animal_dog").css("display", "none");
+					$("#error_message_animal_none").css("display", "none");
+					form_cat = $(this).clone(); // Записываем котика для последнего этапа
+				} else if ($(this).hasClass("dogs")) {
+					$("#error_message_animal_none").css("display", "none");
+					$(".cats").css("border", "4px solid #f5f5f5");
+					$(".dog4").css("border", "4px solid #ff9100");
+					form_cat = "";
+				};
+			});
+
+			function validCat() {
+				if (form_cat) {
+					$("#step_4").css("display", "none");
+					$("#step_5").css("display", "inline-block");
+					$(".paginat").css("display", "none");
+					$(".prev_next").css("display", "none");
+					$(".go_to_start").css("display", "inline-block");
+					$(".go_to_start").css("display", "inline-block");
+					to_step = 5;
+					final_data();
+				} else if (($(".dog4").css("border")) == "4px solid rgb(255, 145, 0)") {
+					$("#error_message_animal_dog").css("display", "block");
+					invalidForm();
+				} else {
+					$("#error_message_animal_none").css("display", "block");
+					invalidForm();
+				};
+			};
+
+
+			// Пятый этап
+			function final_data() {
+
+				// Вставляем на нужное место все полученные данные
+				$("#final_login").append(form_login);
+				$("#final_email").append(form_email);
+
+				var final_region = form_city_name + ", " + form_country_name;
+				$("#final_region").append(final_region);
+
+				$(form_cat).css("border", "4px solid #ffffff");
+				$("#final_cat").append(form_cat);
+				
+				if ($("#final_cat div").hasClass("cat1")) {
+					$(".cat1").css("left", "auto");
+					$("#final_cat div").css("background-size", "275px 200px").css("background-position", "60% 20%");
+				} else if ($("#final_cat div").hasClass("cat2")) {
+					$("#final_cat div").css("background-size", "312px 204px").css("background-position", "30% 20%");
+				} else {
+					$(".cat3").css("left", "auto");
+					$("#final_cat div").css("background-size", "260px 190px").css("background-position", "70% 20%");
+				};
+
+				$("#final_cat div").toggleClass("cats final_cat");
+
+				var final_social = "";
+				var final_facebook, final_vk, final_twitter, final_ok = "";
+
+				// Сокращаем адреса соцсетей, если они были введены с http, https, www.
+				// Дополнительно меняем facebook на fb, если было введен именно facebook.
+				// Для осуществления корректных переходов делаем все ссылки абсолютными
+				var valid_final_social = /(http:\/\/|https:\/\/)?(www.)?.+/i;
+
+				form_facebook = form_facebook.replace(/(http:\/\/|https:\/\/)?(www.)?facebook+/i, "fb");
+				final_facebook = form_facebook.replace(/fb/, "https://fb");
+				if (form_facebook.length != 0) {
+					final_social += "<span class='social_name'>Facebook:</span> " + "<a href=" + final_facebook + ">" + form_facebook + "</a></br>";
+				};
+
+				form_vk = form_vk.replace(/(http:\/\/|https:\/\/)?(www.)?/i, "");
+				final_vk = form_vk.replace(/vk/, "https://vk");
+				if (form_vk.length != 0) {
+					final_social += "<span class='social_name'>Вконтакте:</span> " + "<a href=" + final_vk + ">" + form_vk +" </a></br>";
+				};
+
+				form_twitter = form_twitter.replace(/(http:\/\/|https:\/\/)?(www.)?/i, "");
+				final_twitter = form_twitter.replace(/twitter/, "https://twitter");
+				if (form_twitter.length != 0) {
+					final_social += "<span class='social_name'>Twitter:</span> " + "<a href=" + final_twitter + ">" + form_twitter + "</a></br>";
+				};
+
+				form_ok = form_ok.replace(/(http:\/\/|https:\/\/)?(www.)?/i, "");
+				final_ok = form_ok.replace(/ok/, "https://ok");
+				if (form_ok.length != 0) {
+					final_social += "<span class='social_name'>Одноклассники:</span> " + "<a href=" + final_ok + ">" + form_ok + "</a></br>";
+				};
+
+				$("#final_social").append(final_social);
+
+				//Динамическое изменение ширины блока в зависимости от ширины контента
+				var max_width = 0;
+				$("#step_5 p").each(function(argument) {
+					if ($(this).width() > max_width) {
+						max_width = $(this).width();
+					};
+				});
+				var step_5_width = 25 + max_width + 50 + $(".final_cat").width() + 24 + "px";
+				$("#step_5").css("width", step_5_width);
+
+				// Определение расположения кнопки
+				if (window.matchMedia("(max-width: 690px)").matches) {
+					var button_top = +$("#step_5").css("top").match(/\d+/)[0] + $("#step_5").outerHeight() + $(".go_to_start").outerHeight() + 20 + "px";
+					$("#final_button").css("top", button_top);
+				} else {
+					$("#final_button").css("top", "");
+				};
+
+				// Обнуляем кучу всего
+				$(document).on("click", ".go_to_start", function () {
+
+					$("#step_5").css("display", "none");
+					$("#step_1").css("display", "inline-block");
+
+					$(".login").val("");
+					form_login = "";
+					$(".email").val("");
+					form_email = "";
+
+					$("#countries_header").val("");
+					$("#countries_header").css("color", "#000000");
+					$("#select_countries ul li").css("display", "inline-block");
+					$("#cities_header").val("");
+					$("#cities_header").css("color", "#000000");
+					$("#cities_header").css("background", "#e6e6e6");
+					$("#cities_header").prop("disabled", true);
+					$(".cities_element").remove();
+
+					$(".checkbox_check").click();
+
+					$(".cat1").css("left", "-166px");
+					$(".cat3").css("left", "166px");
+					$(".cats").css("border", "4px solid #f5f5f5");
+
+					$(".paginat").css("display", "inline-block");
+					$(".prev_next").css("display", "inline-block");
+					$(".go_to_start").css("display", "none");
+					$(".next").val("Следующий 〉");
+					$(".next").css("background", "#ffffff");
+					$(".next").css("color", "#ff9800");
+					$(".prev").val("GitHub");
+					$(".prev").css("background", "#000000");
+					$(".prev").css("color", "#ffffff");
+					$(".prev").attr("onclick", "window.open('https://github.com/Siplyj/questionnaire')");
+
+					$(".button_step_1").addClass("step_button_active");
+					$(".button_step_1").css("color", "#000000");
+					$(".button_step_1").css("cursor", "default");
+
+					for (var i = 3; i <= max_step; i++) {
+						$(".button_step_" + i).removeClass("step_button_active");
+						$(".button_step_" + i).css("color", "#808080");
+						$(".button_step_" + i).css("cursor", "default");
+						$(".button_step_" + i).prop("disabled", true);
+					};
+
+					from_step = 1;
+					to_step = 1;
+					last_step = 1;
+					max_step = 1;
+
+					$("#final_login, #final_email, #final_region, #final_social, #final_cat").empty();
+				});
+			};
+
+			// Переходы по кнопкам "Следующий"
+			$(document).on("click", ".next", function () {
+				nextButton(this);
+			});
+
+			// Переходы по кнопкам "Следующий" и на этапы с номером большим текущего
+			function nextButton(button) {
+				from_step = to_step;
+
+				if ($(button).hasClass("next")) {
+					to_step = +from_step + 1;
+				} else {
+					to_step = $(button).attr("class").match(/\d+/)[0];
+				};
+
+				if (from_step == 1) {
+					validLoginEmail();
+				} else if (from_step == 2) {
+					validCountryCity();
+				} else if (from_step == 3) {
+					validSocial();
+				} else if (from_step == 4) {
+					validCat();
+				};
+			};
+
+			// Выполнить если проверка этапа прошла успешно
+			function validForm() {
+				$(".button_step_" + from_step).removeClass("step_button_active");
+				$(".button_step_" + from_step).css("color", "#ff9800");
+				$(".button_step_" + from_step).css("cursor", "pointer");
+				$("#step_" + from_step).css("display", "none");
+
+				$(".button_step_" + to_step).addClass("step_button_active");
+				$(".button_step_" + to_step).css("color", "#000000");
+				$(".button_step_" + to_step).css("cursor", "default");
+				$("#step_" + to_step).css("display", "inline-block");
+
+				$(".button_step_" + (+to_step + 1)).removeAttr("disabled");
+				$(".button_step_" + (+to_step + 1)).css("color", "#ff9800");
+				$(".button_step_" + (+to_step + 1)).css("cursor", "pointer");
+
+				if (max_step == from_step) {
+					last_step = to_step;
+					max_step = to_step;
+				} else {
+					last_step = max_step;
+				};
+
+				if (to_step != 1) {
+					$(".prev").val("〈 Предыдущий");
+					$(".prev").css("background", "#ffffff");
+					$(".prev").css("color", "#ff9800");
+					$(".prev").removeAttr("onclick");
+				};
+
+				longOrNot();
+			};
+
+			// Выполнить если проверка этапа провалилась
+			function invalidForm() {
+				from_step = $(".step_button_active").attr("class").match(/\d+/)[0];
+				to_step = $(".step_button_active").attr("class").match(/\d+/)[0];
+				last_step = to_step;
+				longOrNot();
+			};
+
+			// Переходы по кнопкам "Предыдущий"
+			$(document).on("click", ".prev", function () {
+				if (to_step == 1) {
+
+				} else {
+					prevButton(this);
+				};
+			});
+
+			// Переходы по кнопкам "Предыдущий" и на этапы с номером меньшим текущего
+			function prevButton(button) {
+				from_step = to_step;
+				$("#step_" + from_step).css("display", "none");
+
+				if ($(button).hasClass("prev")) {
+					to_step = from_step - 1;
+				} else {
+					to_step = $(button).attr("class").match(/\d+/)[0];
+				};
+
+				$("#step_" + to_step).css("display", "inline-block");
+
+				$(".button_step_" + from_step).removeClass("step_button_active");
+				$(".button_step_" + from_step).css("color", "#ff9800");
+				$(".button_step_" + from_step).css("cursor", "pointer");
+				$(".button_step_" + to_step).addClass("step_button_active");
+				$(".button_step_" + to_step).css("color", "#000000");
+				$(".button_step_" + to_step).css("cursor", "default");
+
+				if (to_step == 1) {
+					$(".prev").val("GitHub");
+					$(".prev").css("background", "#000000");
+					$(".prev").css("color", "#ffffff");
+					$(".prev").attr("onclick", "window.open('https://github.com/Siplyj/questionnaire')");
+				};
+
+				if (from_step == 4) {
+					$(".next").val("Следующий 〉");
+					$(".next").css("background", "#ffffff");
+					$(".next").css("color", "#ff9800");
+				};
+				longOrNot();
+			};
+
+			// Переходы по цифрам
+			$(document).on("click", ".button_step", function () {
+				if ($(this).attr("class").match(/\d+/)[0] - to_step > 1) { // если между этапами 1 или более этапов
+					for (var i = to_step; i <= $(this).attr("class").match(/\d+/)[0]; i++) {
+						nextButton(".button_step_" + i);
+					};
+				} else if ($(this).attr("class").match(/\d+/)[0] - to_step == 1) { // если переход на следующий этап
+					nextButton(this);
+				} else if ($(this).attr("class").match(/\d+/)[0] < to_step) { // если переход на предыдущий этап
+					prevButton(this);
+				};
+			});
+
+			// Определение помещается ли сообщение об ошибке на странице без горизонтальной прокрутки или нет
+			function longOrNot() {
+				var arrError = ["login", "country", "link"];
+				$.each(arrError, function(argument) {
+					if ($(".error_message_" + this + 1).outerWidth() != 0) {
+						for (var i = 1; i <= $("[class ^= error_message_" + this + "]").length; i++) {
+							if (($("." + this).offset().left + $("." + this).outerWidth() + $(".error_message_" + this + 1).outerWidth()) > $(window).outerWidth()) {
+								$(".error_message_" + this + i).addClass("long");
+							} else {
+								$(".error_message_" + this + i).removeClass("long");
+							};
+						};
+					};
+				});
+			};
+			
+			// Обработка сжатия/растягивания страницы
+			$(window).resize(function() {
+
+				if($("#step_5").css("display") == "none" && window.matchMedia("(max-width: 690px)").matches) {
+					$(".cat1").css("left", "-153px");
+					$(".cat3").css("left", "-153px");
+				} else if ($("#step_5").css("display") == "none" && window.matchMedia("(min-width: 690px)")) {
+					$(".cat1").css("left", "-166px");
+					$(".cat3").css("left", "166px");
+				};
+
+				if (window.matchMedia("(max-width: 690px)").matches) {
+					var button_top = +$("#step_5").css("top").match(/\d+/)[0] + $("#step_5").outerHeight() + $(".go_to_start").outerHeight() + 20 + "px";
+					$("#final_button").css("top", button_top);
+				} else {
+					$("#final_button").css("top", "");
+				};
+
+				longOrNot();
+			});
+		});
+	</script>
+</body>
+</html>

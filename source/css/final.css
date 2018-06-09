@@ -1,0 +1,95 @@
+#step_5 {
+	height: 245px;
+	width: 560px;
+	background: #ffffff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#final_login {
+	position: initial;
+	display: table;
+	font-size: 20px;
+	font-family: "Open Sans";
+	margin: 35px 0px 0px 25px;
+	width: max-content;
+}
+
+#final_email {
+	position: initial;
+	display: table;
+	font-size: 15px;
+	font-family: "Open Sans";
+	color: #808080;
+	margin: 10px 0px 0px 25px;
+	width: max-content;
+}
+
+#final_region {
+	position: initial;
+	display: table;
+	font-size: 15px;
+	font-family: "Open Sans";
+	color: #808080;
+	margin: 20px 0px 0px 25px;
+	width: max-content;
+}
+
+#final_social {
+	display: block;
+	position: absolute;
+	bottom: 10px;
+	font-size: 15px;
+	font-family: "Open Sans";
+	color: #808080;
+	margin-left: 25px;
+	width: max-content;
+}
+
+#final_social a {
+	text-decoration: none;
+	color: #808080;
+}
+
+.social_name {
+	color: #0054d8
+}
+
+.final_cat {
+	display: block;
+	position: absolute;
+	top: 24px;
+	right: 24px;
+	border: none;
+	border-radius: 2px;
+	width: 200px;
+	height: 195px;
+	cursor: default;
+}
+
+#final_button {
+	display: inline-block;
+	position: absolute;
+	height: 245px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -20.61%);
+}
+
+.go_to_start {
+	display: none;
+	position: absolute;
+	height: 40px;
+	width: 138px;
+	bottom: 0px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	text-align: center;
+	font-size: 15px;
+	font-family: "Open Sans";
+	color: #ffffff;
+	border-style: none;
+	border-radius: 2px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	background: #ff9800;
+	cursor: pointer;
+}
